@@ -15,14 +15,14 @@ const NamesSection = () => {
           animate={isInView ? { opacity: 1, x: 0 } : {}}
           transition={{ duration: 1, ease: "easeOut" }}
         >
-          <h2 className="name-text text-foreground">{weddingData.groom.name.split(' ')[0]}</h2>
+          <h2 className="name-text text-foreground">{weddingData.bride.name.split(' ')[0]}</h2>
           <p className="font-body text-sm md:text-base text-muted-foreground mt-4 tracking-widest uppercase">
-            Son of {weddingData.groom.father}
+            Daughter of {weddingData.bride.father}
           </p>
           <p className="font-body text-xs md:text-sm text-muted-foreground/70 mt-2">
-            Grandson of {weddingData.groom.grandfather}
+            Granddaughter of {weddingData.bride.grandfather}
           </p>
-          <p className="handwriting-text text-foreground/60 mt-2">{weddingData.groom.location}</p>
+          <p className="handwriting-text text-foreground/60 mt-2">{weddingData.bride.location}</p>
         </motion.div>
 
         <motion.div
@@ -39,14 +39,14 @@ const NamesSection = () => {
           animate={isInView ? { opacity: 1, x: 0 } : {}}
           transition={{ duration: 1, delay: 0.5, ease: "easeOut" }}
         >
-          <h2 className="name-text text-foreground">{weddingData.bride.name.split(' ')[0]}</h2>
+          <h2 className="name-text text-foreground">{weddingData.groom.name.split(' ')[0]}</h2>
           <p className="font-body text-sm md:text-base text-muted-foreground mt-4 tracking-widest uppercase">
-            Daughter of {weddingData.bride.father}
+            Son of {weddingData.groom.father}
           </p>
           <p className="font-body text-xs md:text-sm text-muted-foreground/70 mt-2">
-            Granddaughter of {weddingData.bride.grandfather}
+            Grandson of {weddingData.groom.grandfather}
           </p>
-          <p className="handwriting-text text-foreground/60 mt-2">{weddingData.bride.location}</p>
+          <p className="handwriting-text text-foreground/60 mt-2">{weddingData.groom.location}</p>
         </motion.div>
 
         <motion.p
