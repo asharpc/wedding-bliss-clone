@@ -8,7 +8,6 @@ const AudioPlayer = () => {
   const audioRef = useRef<HTMLAudioElement>(null);
 
   useEffect(() => {
-    // Hide prompt after 5 seconds
     const timer = setTimeout(() => {
       setShowPrompt(false);
     }, 5000);
@@ -44,7 +43,7 @@ const AudioPlayer = () => {
               initial={{ opacity: 0, x: 20 }}
               animate={{ opacity: 1, x: 0 }}
               exit={{ opacity: 0, x: 20 }}
-              className="bg-card/90 backdrop-blur-sm border border-border/50 rounded-full px-4 py-2"
+              className="bg-background border border-foreground/20 rounded-full px-4 py-2"
             >
               <p className="font-body text-sm text-foreground/80 flex items-center gap-2">
                 <Music className="w-4 h-4" />
@@ -59,10 +58,10 @@ const AudioPlayer = () => {
           animate={{ opacity: 1, scale: 1 }}
           transition={{ delay: 1 }}
           onClick={togglePlay}
-          className={`w-12 h-12 rounded-full flex items-center justify-center transition-all duration-300 ${
+          className={`w-12 h-12 rounded-full flex items-center justify-center transition-all duration-300 border ${
             isPlaying 
-              ? 'bg-foreground text-background' 
-              : 'bg-card/90 backdrop-blur-sm border border-border/50 text-foreground hover:bg-card'
+              ? 'bg-foreground text-background border-foreground' 
+              : 'bg-background border-foreground/30 text-foreground hover:border-foreground'
           }`}
         >
           {isPlaying ? (

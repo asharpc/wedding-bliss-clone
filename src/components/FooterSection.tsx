@@ -8,7 +8,7 @@ const FooterSection = () => {
   const isInView = useInView(ref, { once: true, margin: "-50px" });
 
   return (
-    <footer ref={ref} className="bg-secondary/20 py-20 px-6">
+    <footer ref={ref} className="bg-background py-20 px-6">
       <div className="max-w-4xl mx-auto text-center">
         <motion.div
           initial={{ opacity: 0, y: 20 }}
@@ -37,7 +37,7 @@ const FooterSection = () => {
           initial={{ opacity: 0 }}
           animate={isInView ? { opacity: 1 } : {}}
           transition={{ duration: 0.8, delay: 0.4 }}
-          className="mt-16 pt-8 border-t border-border/30"
+          className="mt-16 pt-8 border-t border-foreground/10"
         >
           <p className="font-body text-xs text-muted-foreground/50">
             Made with ❤️ for our special day
