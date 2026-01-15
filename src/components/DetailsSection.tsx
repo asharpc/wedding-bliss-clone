@@ -2,8 +2,9 @@ import { motion } from 'framer-motion';
 import { useInView } from 'framer-motion';
 import { useRef } from 'react';
 import { MapPin, Calendar } from 'lucide-react';
-import { weddingData, formatDate } from '@/lib/weddingData';
+import { weddingData } from '@/lib/weddingData';
 import CountdownTimer from './CountdownTimer';
+import venueImage from '@/assets/venue-image.jpg';
 
 const DetailsSection = () => {
   const ref = useRef(null);
@@ -22,93 +23,150 @@ const DetailsSection = () => {
     window.open(calendarUrl, '_blank');
   };
 
+  // Get day, month, year
+  const eventDate = new Date(weddingData.nikah.date);
+  const day = eventDate.getDate();
+  const month = eventDate.toLocaleDateString('en-US', { month: 'short' }).toUpperCase();
+  const year = eventDate.getFullYear();
+  const weekday = eventDate.toLocaleDateString('en-US', { weekday: 'long' }).toUpperCase();
+
   return (
-    <section ref={ref} className="min-h-screen bg-background section-padding">
-      <div className="max-w-4xl mx-auto">
-        {/* Countdown */}
+    <section ref={ref} className="bg-background">
+      {/* Countdown Section */}
+      <div className="px-6 py-16 md:py-24">
         <motion.div
           initial={{ opacity: 0, y: 30 }}
           animate={isInView ? { opacity: 1, y: 0 } : {}}
           transition={{ duration: 0.8 }}
-          className="mb-24"
         >
           <CountdownTimer />
         </motion.div>
-
-        {/* Nikah */}
-        <motion.div
-          initial={{ opacity: 0, y: 30 }}
-          animate={isInView ? { opacity: 1, y: 0 } : {}}
-          transition={{ duration: 0.8, delay: 0.2 }}
-          className="text-center mb-20"
-        >
-          <h3 className="font-display text-4xl md:text-5xl lg:text-6xl text-foreground tracking-wider mb-6">
-            NIKAH
-          </h3>
-          <p className="font-body text-lg md:text-xl text-foreground mb-2">
-            {formatDate(weddingData.nikah.date)}
-          </p>
-          <p className="font-body text-lg md:text-xl text-foreground">
-            {weddingData.nikah.time}
-          </p>
-        </motion.div>
-
-        {/* Reception */}
-        <motion.div
-          initial={{ opacity: 0, y: 30 }}
-          animate={isInView ? { opacity: 1, y: 0 } : {}}
-          transition={{ duration: 0.8, delay: 0.4 }}
-          className="text-center mb-20"
-        >
-          <h3 className="font-display text-4xl md:text-5xl lg:text-6xl text-foreground tracking-wider mb-6">
-            RECEPTION
-          </h3>
-          <p className="font-body text-lg md:text-xl text-foreground mb-2">
-            {formatDate(weddingData.reception.date)}
-          </p>
-          <p className="font-body text-lg md:text-xl text-foreground">
-            {weddingData.reception.time}
-          </p>
-        </motion.div>
-
-        {/* Venue */}
-        <motion.div
-          initial={{ opacity: 0, y: 30 }}
-          animate={isInView ? { opacity: 1, y: 0 } : {}}
-          transition={{ duration: 0.8, delay: 0.6 }}
-          className="text-center mb-16"
-        >
-          <h3 className="font-display text-4xl md:text-5xl lg:text-6xl text-foreground tracking-wider mb-6">
-            VENUE
-          </h3>
-          <p className="font-body text-lg md:text-xl text-foreground mb-2">
-            {weddingData.nikah.venue}
-          </p>
-          <p className="font-body text-base md:text-lg text-muted-foreground mb-10">
-            {weddingData.nikah.venue_address}
-          </p>
-
-          <div className="flex flex-col sm:flex-row gap-6 justify-center items-center">
-            <a
-              href={weddingData.nikah.google_maps_link}
-              target="_blank"
-              rel="noopener noreferrer"
-              className="font-body text-foreground underline underline-offset-4 hover:no-underline transition-all flex items-center gap-2"
-            >
-              <MapPin className="w-4 h-4" />
-              View on Maps
-            </a>
-            
-            <button
-              onClick={addToCalendar}
-              className="font-body text-foreground underline underline-offset-4 hover:no-underline transition-all flex items-center gap-2"
-            >
-              <Calendar className="w-4 h-4" />
-              Add to Calendar
-            </button>
-          </div>
-        </motion.div>
       </div>
+
+      {/* Date Display - Modern Style */}
+      <motion.div
+        initial={{ opacity: 0, y: 30 }}
+        animate={isInView ? { opacity: 1, y: 0 } : {}}
+        transition={{ duration: 0.8, delay: 0.2 }}
+        className="text-center px-6 py-12 md:py-16"
+      >
+        <div className="flex flex-col items-center">
+          {/* Month */}
+          <span className="font-display text-lg md:text-xl lg:text-2xl text-foreground tracking-[0.3em] mb-2">
+            {month}
+          </span>
+          {/* Day - Big and Bold */}
+          <span className="font-display text-8xl md:text-9xl lg:text-[12rem] text-foreground font-bold leading-none">
+            {day}
+          </span>
+          {/* Year */}
+          <span className="font-display text-xl md:text-2xl lg:text-3xl text-foreground tracking-[0.3em] mt-2">
+            {year}
+          </span>
+        </div>
+      </motion.div>
+
+      {/* Nikah & Reception Times */}
+      <div className="px-6 py-12 md:py-16">
+        <div className="max-w-sm mx-auto space-y-12">
+          {/* Nikah */}
+          <motion.div
+            initial={{ opacity: 0, y: 30 }}
+            animate={isInView ? { opacity: 1, y: 0 } : {}}
+            transition={{ duration: 0.8, delay: 0.3 }}
+            className="text-center"
+          >
+            <h3 className="font-display text-2xl md:text-3xl text-foreground tracking-wider mb-4">
+              NIKAH
+            </h3>
+            <p className="font-body text-base md:text-lg text-foreground/80">
+              {weekday}
+            </p>
+            <p className="font-body text-lg md:text-xl text-foreground">
+              {weddingData.nikah.time}
+            </p>
+          </motion.div>
+
+          {/* Reception */}
+          <motion.div
+            initial={{ opacity: 0, y: 30 }}
+            animate={isInView ? { opacity: 1, y: 0 } : {}}
+            transition={{ duration: 0.8, delay: 0.4 }}
+            className="text-center"
+          >
+            <h3 className="font-display text-2xl md:text-3xl text-foreground tracking-wider mb-4">
+              RECEPTION
+            </h3>
+            <p className="font-body text-base md:text-lg text-foreground/80">
+              {weekday}
+            </p>
+            <p className="font-body text-lg md:text-xl text-foreground">
+              {weddingData.reception.time}
+            </p>
+          </motion.div>
+        </div>
+      </div>
+
+      {/* Location Section with Image */}
+      <motion.div
+        initial={{ opacity: 0, y: 30 }}
+        animate={isInView ? { opacity: 1, y: 0 } : {}}
+        transition={{ duration: 0.8, delay: 0.5 }}
+        className="text-center px-6 py-12"
+      >
+        <h3 className="font-display text-4xl md:text-5xl lg:text-6xl text-foreground tracking-wider mb-8">
+          LOCATION
+        </h3>
+      </motion.div>
+
+      {/* Venue Image - Full Width */}
+      <motion.div
+        initial={{ opacity: 0 }}
+        animate={isInView ? { opacity: 1 } : {}}
+        transition={{ duration: 1, delay: 0.6 }}
+        className="w-full"
+      >
+        <img
+          src={venueImage}
+          alt="Rozia International Convention Centre"
+          className="w-full h-[60vh] md:h-[70vh] object-cover"
+        />
+      </motion.div>
+
+      {/* Venue Details */}
+      <motion.div
+        initial={{ opacity: 0, y: 30 }}
+        animate={isInView ? { opacity: 1, y: 0 } : {}}
+        transition={{ duration: 0.8, delay: 0.7 }}
+        className="text-center px-6 py-12 md:py-16"
+      >
+        <h4 className="font-display text-2xl md:text-3xl text-foreground tracking-wide mb-4">
+          {weddingData.nikah.venue}
+        </h4>
+        <p className="font-body text-sm md:text-base text-foreground/70 max-w-md mx-auto mb-8 leading-relaxed">
+          {weddingData.nikah.venue_address}
+        </p>
+
+        <div className="flex flex-col sm:flex-row gap-4 justify-center items-center">
+          <a
+            href={weddingData.nikah.google_maps_link}
+            target="_blank"
+            rel="noopener noreferrer"
+            className="inline-flex items-center gap-2 px-6 py-3 border border-foreground text-foreground font-body text-sm tracking-wider hover:bg-foreground hover:text-background transition-all duration-300"
+          >
+            <MapPin className="w-4 h-4" />
+            View on Maps
+          </a>
+          
+          <button
+            onClick={addToCalendar}
+            className="inline-flex items-center gap-2 px-6 py-3 bg-foreground text-background font-body text-sm tracking-wider hover:bg-foreground/90 transition-all duration-300"
+          >
+            <Calendar className="w-4 h-4" />
+            Add to Calendar
+          </button>
+        </div>
+      </motion.div>
     </section>
   );
 };
