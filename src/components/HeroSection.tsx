@@ -1,5 +1,6 @@
 import { useEffect, useState } from 'react';
 import { motion } from 'framer-motion';
+import posterImage from '../assets/poster.jpg';
 
 const HeroSection = () => {
   const [scrollY, setScrollY] = useState(0);
@@ -20,7 +21,7 @@ const HeroSection = () => {
           muted
           playsInline
           className="w-full h-full object-cover"
-          poster="https://images.unsplash.com/photo-1519741497674-611481863552?w=1920&q=80"
+          poster={posterImage}
         >
           <source
             src="https://framerusercontent.com/assets/XT63RdS8yMFwBp3W4rUTNBBsH80.mp4"

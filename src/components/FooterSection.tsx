@@ -28,7 +28,7 @@ const FooterSection = () => {
         <div className="w-16 h-px bg-foreground/30 mx-auto mb-8" />
 
         <h3 className="font-display text-2xl md:text-3xl text-foreground tracking-wide mb-6">
-          {weddingData.bride.name.split(' ')[0]} & {weddingData.groom.name.split(' ')[0]}
+          {weddingData.bride.name.split(' ')[0]} & {weddingData.groom.name.split(' ')[1]}
         </h3>
 
         <p className="font-body text-xs text-foreground/50 tracking-widest uppercase">

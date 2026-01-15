@@ -1,6 +1,7 @@
 import { motion } from 'framer-motion';
 import { useInView } from 'framer-motion';
 import { useRef } from 'react';
+import { useLocation } from 'react-router-dom';
 import { MapPin, Calendar } from 'lucide-react';
 import { weddingData } from '@/lib/weddingData';
 import CountdownTimer from './CountdownTimer';
@@ -9,17 +10,25 @@ import venueImage from '@/assets/venue-image.jpg';
 const DetailsSection = () => {
   const ref = useRef(null);
   const isInView = useInView(ref, { once: true, margin: "-100px" });
+  const location = useLocation();
+
+  const isNikahPage = location.pathname.includes('nikah');
+  const isReceptionPage = location.pathname.includes('reception');
+
+  // Show both if not specifically on nikah or reception page, or if explicitly requested
+  const showNikah = isNikahPage || (!isNikahPage && !isReceptionPage);
+  const showReception = isReceptionPage || (!isNikahPage && !isReceptionPage);
 
   const addToCalendar = () => {
     const startDate = new Date('2026-02-15T11:30:00');
     const endDate = new Date('2026-02-15T21:00:00');
-    
+
     const formatDateForCalendar = (date: Date) => {
       return date.toISOString().replace(/-|:|\.\d+/g, '');
     };
 
     const calendarUrl = `https://www.google.com/calendar/render?action=TEMPLATE&text=${encodeURIComponent('Rifha Fathima & Abdul Lihan Wedding')}&dates=${formatDateForCalendar(startDate)}/${formatDateForCalendar(endDate)}&details=${encodeURIComponent('Nikah at 11:30 AM, Reception at 5:00 PM')}&location=${encodeURIComponent(weddingData.nikah.venue_address)}`;
-    
+
     window.open(calendarUrl, '_blank');
   };
 
@@ -70,40 +79,45 @@ const DetailsSection = () => {
       <div className="px-6 py-12 md:py-16">
         <div className="max-w-sm mx-auto space-y-12">
           {/* Nikah */}
-          <motion.div
-            initial={{ opacity: 0, y: 30 }}
-            animate={isInView ? { opacity: 1, y: 0 } : {}}
-            transition={{ duration: 0.8, delay: 0.3 }}
-            className="text-center"
-          >
-            <h3 className="font-display text-2xl md:text-3xl text-foreground tracking-wider mb-4">
-              NIKAH
-            </h3>
-            <p className="font-body text-base md:text-lg text-foreground/80">
-              {weekday}
-            </p>
-            <p className="font-body text-lg md:text-xl text-foreground">
-              {weddingData.nikah.time}
-            </p>
-          </motion.div>
+          {/* Nikah */}
+          {showNikah && (
+            <motion.div
+              initial={{ opacity: 0, y: 30 }}
+              animate={isInView ? { opacity: 1, y: 0 } : {}}
+              transition={{ duration: 0.8, delay: 0.3 }}
+              className="text-center"
+            >
+              <h3 className="font-display text-2xl md:text-3xl text-foreground tracking-wider mb-4">
+                NIKAH
+              </h3>
+              <p className="font-body text-base md:text-lg text-foreground/80">
+                {weekday}
+              </p>
+              <p className="font-body text-lg md:text-xl text-foreground">
+                {weddingData.nikah.time}
+              </p>
+            </motion.div>
+          )}
 
           {/* Reception */}
-          <motion.div
-            initial={{ opacity: 0, y: 30 }}
-            animate={isInView ? { opacity: 1, y: 0 } : {}}
-            transition={{ duration: 0.8, delay: 0.4 }}
-            className="text-center"
-          >
-            <h3 className="font-display text-2xl md:text-3xl text-foreground tracking-wider mb-4">
-              RECEPTION
-            </h3>
-            <p className="font-body text-base md:text-lg text-foreground/80">
-              {weekday}
-            </p>
-            <p className="font-body text-lg md:text-xl text-foreground">
-              {weddingData.reception.time}
-            </p>
-          </motion.div>
+          {showReception && (
+            <motion.div
+              initial={{ opacity: 0, y: 30 }}
+              animate={isInView ? { opacity: 1, y: 0 } : {}}
+              transition={{ duration: 0.8, delay: 0.4 }}
+              className="text-center"
+            >
+              <h3 className="font-display text-2xl md:text-3xl text-foreground tracking-wider mb-4">
+                RECEPTION
+              </h3>
+              <p className="font-body text-base md:text-lg text-foreground/80">
+                {weekday}
+              </p>
+              <p className="font-body text-lg md:text-xl text-foreground">
+                {weddingData.reception.time}
+              </p>
+            </motion.div>
+          )}
         </div>
       </div>
 
@@ -157,7 +171,7 @@ const DetailsSection = () => {
             <MapPin className="w-4 h-4" />
             View on Maps
           </a>
-          
+
           <button
             onClick={addToCalendar}
             className="inline-flex items-center gap-2 px-6 py-3 bg-foreground text-background font-body text-sm tracking-wider hover:bg-foreground/90 transition-all duration-300"
