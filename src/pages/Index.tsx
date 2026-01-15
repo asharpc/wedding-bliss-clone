@@ -1,4 +1,5 @@
 import HeroSection from '@/components/HeroSection';
+import BismillahSection from '@/components/BismillahSection';
 import NamesSection from '@/components/NamesSection';
 import DetailsSection from '@/components/DetailsSection';
 import WishesSection from '@/components/WishesSection';
@@ -9,6 +10,7 @@ const Index = () => {
   return (
     <main className="bg-background">
       <HeroSection />
+      <BismillahSection />
       <NamesSection />
       <DetailsSection />
       <WishesSection />
