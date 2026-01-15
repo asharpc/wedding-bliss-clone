@@ -18,23 +18,19 @@ const FooterSection = () => {
         <p className="font-handwriting text-lg md:text-xl text-foreground/60 mb-4">
           You are cordially invited by
         </p>
-        
+
         <div className="space-y-3 mb-8">
           <p className="font-display text-lg md:text-xl text-foreground tracking-wide">
             {weddingData.groom.father} Family
           </p>
-          <p className="font-body text-xs text-foreground/40">&</p>
-          <p className="font-display text-lg md:text-xl text-foreground tracking-wide">
-            {weddingData.bride.father} Family
-          </p>
         </div>
-        
+
         <div className="w-16 h-px bg-foreground/30 mx-auto mb-8" />
-        
+
         <h3 className="font-display text-2xl md:text-3xl text-foreground tracking-wide mb-6">
           {weddingData.bride.name.split(' ')[0]} & {weddingData.groom.name.split(' ')[0]}
         </h3>
-        
+
         <p className="font-body text-xs text-foreground/50 tracking-widest uppercase">
           February 15, 2026
         </p>
