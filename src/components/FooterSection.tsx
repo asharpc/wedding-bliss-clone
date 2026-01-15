@@ -21,7 +21,7 @@ const FooterSection = () => {
 
         <div className="space-y-3 mb-8">
           <p className="font-display text-lg md:text-xl text-foreground tracking-wide">
-            {weddingData.groom.father} Family
+            {weddingData.bride.father} Family
           </p>
         </div>
 

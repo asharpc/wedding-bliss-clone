@@ -37,7 +37,7 @@ const DetailsSection = () => {
   const day = eventDate.getDate();
   const month = eventDate.toLocaleDateString('en-US', { month: 'short' }).toUpperCase();
   const year = eventDate.getFullYear();
-  const weekday = eventDate.toLocaleDateString('en-US', { weekday: 'long' }).toUpperCase();
+  const weekday = eventDate.toLocaleDateString('en-US', { weekday: 'long' });
 
   return (
     <section ref={ref} className="bg-background">
@@ -65,9 +65,14 @@ const DetailsSection = () => {
             {month}
           </span>
           {/* Day - Big and Bold */}
-          <span className="font-display text-8xl md:text-9xl lg:text-[12rem] text-foreground font-bold leading-none">
-            {day}
-          </span>
+          <div className="flex items-center gap-4">
+            <span className="font-display text-8xl md:text-9xl lg:text-[12rem] text-foreground font-bold leading-none">
+              {day}
+            </span>
+            <span className="font-display text-2xl md:text-3xl lg:text-4xl text-foreground/80 tracking-widest uppercase">
+              {weekday}
+            </span>
+          </div>
           {/* Year */}
           <span className="font-display text-xl md:text-2xl lg:text-3xl text-foreground tracking-[0.3em] mt-2">
             {year}

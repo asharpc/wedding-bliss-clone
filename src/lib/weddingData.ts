@@ -8,7 +8,7 @@ export const weddingData = {
   },
   bride: {
     name: "Rifha Fathima",
-    father: "Abdul Rafeeque & Saleena",
+    father: "Abdul Rafeeque & Semi Saleena",
     grandfather: "N Abdu Rahiman Haji & Late Chakkarathodi Cheku",
     location: "Noorengal, Melmuri, Malappuram"
   },

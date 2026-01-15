@@ -13,7 +13,6 @@ const WishesSection = () => {
   const [liked, setLiked] = useState(false);
   const [formData, setFormData] = useState({
     name: '',
-    email: '',
     message: ''
   });
 
@@ -30,7 +29,7 @@ const WishesSection = () => {
   const handleSubmit = (e: React.FormEvent) => {
     e.preventDefault();
     toast.success('Thank you for your wishes! 💕');
-    setFormData({ name: '', email: '', message: '' });
+    setFormData({ name: '', message: '' });
   };
 
   return (
@@ -47,10 +46,9 @@ const WishesSection = () => {
             onClick={handleLike}
             className={`group flex items-center gap-3 px-8 py-4 rounded-full border border-foreground/30 transition-all duration-300 hover:border-foreground`}
           >
-            <Heart 
-              className={`w-6 h-6 transition-all duration-300 ${
-                liked ? 'fill-foreground text-foreground scale-110' : 'text-foreground'
-              }`}
+            <Heart
+              className={`w-6 h-6 transition-all duration-300 ${liked ? 'fill-foreground text-foreground scale-110' : 'text-foreground'
+                }`}
             />
             <span className="font-body text-lg text-foreground">{likes}</span>
           </button>
@@ -87,16 +85,7 @@ const WishesSection = () => {
                 placeholder="Your Name"
               />
             </div>
-            <div>
-              <Input
-                type="email"
-                value={formData.email}
-                onChange={(e) => setFormData({ ...formData, email: e.target.value })}
-                required
-                className="bg-transparent border-0 border-b border-foreground/30 rounded-none text-foreground placeholder:text-muted-foreground/50 focus-visible:ring-0 focus-visible:border-foreground px-0 py-3"
-                placeholder="Your Email"
-              />
-            </div>
+
             <div>
               <Textarea
                 value={formData.message}

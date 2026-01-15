@@ -1,4 +1,4 @@
-@import url('https://fonts.googleapis.com/css2?family=Amiri:wght@400;700&family=Bebas+Neue&family=Caveat:wght@400;500;600;700&family=Inter:wght@300;400;500;600&display=swap');
+@import url('https://fonts.googleapis.com/css2?family=Aboreto&family=Amiri:wght@400;700&family=Bebas+Neue&family=Caveat:wght@400;500;600;700&family=Inter:wght@300;400;500;600&display=swap');
 
 @tailwind base;
 @tailwind components;
@@ -29,9 +29,9 @@
     --radius: 0px;
 
     /* Font families */
-    --font-display: 'Bebas Neue', sans-serif;
+    --font-display: 'Aboreto', sans-serif;
     --font-handwriting: 'Caveat', cursive;
-    --font-body: 'Inter', sans-serif;
+    --font-body: 'Aboreto', sans-serif;
     --font-arabic: 'Amiri', 'Georgia', serif;
   }
 
@@ -94,7 +94,7 @@
   }
 
   .video-overlay {
-    @apply absolute inset-0 bg-white/60;
+    @apply absolute inset-0 bg-white/50;
   }
 }
 
@@ -108,16 +108,35 @@
     animation: fadeUp 0.6s ease-out forwards;
   }
 
-  .delay-100 { animation-delay: 100ms; }
-  .delay-200 { animation-delay: 200ms; }
-  .delay-300 { animation-delay: 300ms; }
-  .delay-400 { animation-delay: 400ms; }
-  .delay-500 { animation-delay: 500ms; }
+  .delay-100 {
+    animation-delay: 100ms;
+  }
+
+  .delay-200 {
+    animation-delay: 200ms;
+  }
+
+  .delay-300 {
+    animation-delay: 300ms;
+  }
+
+  .delay-400 {
+    animation-delay: 400ms;
+  }
+
+  .delay-500 {
+    animation-delay: 500ms;
+  }
 }
 
 @keyframes fadeIn {
-  from { opacity: 0; }
-  to { opacity: 1; }
+  from {
+    opacity: 0;
+  }
+
+  to {
+    opacity: 1;
+  }
 }
 
 @keyframes fadeUp {
@@ -125,6 +144,7 @@
     opacity: 0;
     transform: translateY(20px);
   }
+
   to {
     opacity: 1;
     transform: translateY(0);
@@ -133,9 +153,12 @@
 
 /* Floating animation */
 @keyframes float {
-  0%, 100% {
+
+  0%,
+  100% {
     transform: translateY(0px);
   }
+
   50% {
     transform: translateY(-10px);
   }
@@ -168,11 +191,11 @@
   html {
     font-size: 14px;
   }
-  
+
   .hero-text {
     @apply text-4xl;
   }
-  
+
   .name-text {
     @apply text-4xl;
   }
