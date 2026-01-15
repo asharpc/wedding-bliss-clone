@@ -6,7 +6,7 @@ const HeroSection = () => {
 
   useEffect(() => {
     const handleScroll = () => setScrollY(window.scrollY);
-    window.addEventListener('scroll', handleScroll);
+    window.addEventListener('scroll', handleScroll, { passive: true });
     return () => window.removeEventListener('scroll', handleScroll);
   }, []);
 
@@ -30,13 +30,13 @@ const HeroSection = () => {
         <div className="video-overlay" />
       </div>
 
-      {/* Content */}
-      <div className="relative z-10 text-center px-4">
+      {/* Content - Mobile First */}
+      <div className="relative z-10 text-center px-6 w-full max-w-lg mx-auto">
         <motion.p
           initial={{ opacity: 0, y: 20 }}
           animate={{ opacity: 1, y: 0 }}
           transition={{ duration: 0.8, delay: 0.2 }}
-          className="handwriting-text text-foreground/80 mb-8"
+          className="font-handwriting text-xl md:text-2xl text-foreground/80 mb-6"
         >
           You are cordially invited to
         </motion.p>
@@ -45,17 +45,19 @@ const HeroSection = () => {
           initial={{ opacity: 0, scale: 0.9 }}
           animate={{ opacity: 1, scale: 1 }}
           transition={{ duration: 1, delay: 0.4 }}
-          className="hero-text text-foreground mb-4"
-          style={{ transform: `translateY(${scrollY * 0.3}px)` }}
+          className="font-display text-5xl md:text-6xl lg:text-7xl text-foreground tracking-wider mb-4"
+          style={{ transform: `translateY(${scrollY * 0.2}px)` }}
         >
-          CELEBRATE
+          INVITING YOU
+          <br />
+          TO CELEBRATE
         </motion.h1>
 
         <motion.p
           initial={{ opacity: 0, y: 20 }}
           animate={{ opacity: 1, y: 0 }}
           transition={{ duration: 0.8, delay: 0.8 }}
-          className="handwriting-text text-foreground/80 mt-8"
+          className="font-handwriting text-lg md:text-xl text-foreground/80 mt-6"
         >
           the union of two hearts
         </motion.p>
@@ -71,12 +73,12 @@ const HeroSection = () => {
         <motion.div
           animate={{ y: [0, 10, 0] }}
           transition={{ duration: 1.5, repeat: Infinity }}
-          className="w-6 h-10 border-2 border-foreground/50 rounded-full flex justify-center"
+          className="w-5 h-8 border-2 border-foreground/50 rounded-full flex justify-center"
         >
           <motion.div
-            animate={{ y: [0, 12, 0] }}
+            animate={{ y: [0, 10, 0] }}
             transition={{ duration: 1.5, repeat: Infinity }}
-            className="w-1.5 h-3 bg-foreground/70 rounded-full mt-2"
+            className="w-1 h-2 bg-foreground/70 rounded-full mt-1.5"
           />
         </motion.div>
       </motion.div>

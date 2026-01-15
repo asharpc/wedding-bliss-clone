@@ -2,52 +2,43 @@
 @tailwind components;
 @tailwind utilities;
 
-@import url('https://fonts.googleapis.com/css2?family=Bebas+Neue&family=Caveat:wght@400;500;600;700&family=Inter:wght@300;400;500;600&display=swap');
+/* Import fonts including Arabic font */
+@import url('https://fonts.googleapis.com/css2?family=Amiri:wght@400;700&family=Bebas+Neue&family=Caveat:wght@400;500;600;700&family=Inter:wght@300;400;500;600&display=swap');
 
 @layer base {
   :root {
+    /* Pure Black & White Theme */
     --background: 0 0% 100%;
     --foreground: 0 0% 0%;
-
     --card: 0 0% 100%;
     --card-foreground: 0 0% 0%;
-
     --popover: 0 0% 100%;
     --popover-foreground: 0 0% 0%;
-
     --primary: 0 0% 0%;
     --primary-foreground: 0 0% 100%;
-
     --secondary: 0 0% 96%;
     --secondary-foreground: 0 0% 0%;
-
     --muted: 0 0% 96%;
     --muted-foreground: 0 0% 40%;
-
     --accent: 0 0% 96%;
     --accent-foreground: 0 0% 0%;
-
-    --destructive: 0 0% 0%;
+    --destructive: 0 84% 60%;
     --destructive-foreground: 0 0% 100%;
-
-    --border: 0 0% 85%;
-    --input: 0 0% 85%;
+    --border: 0 0% 90%;
+    --input: 0 0% 90%;
     --ring: 0 0% 0%;
-
-    --radius: 0.5rem;
-
-    /* Timer uses black */
-    --timer-green: 0 0% 0%;
+    --radius: 0px;
 
     /* Font families */
     --font-display: 'Bebas Neue', sans-serif;
     --font-handwriting: 'Caveat', cursive;
     --font-body: 'Inter', sans-serif;
+    --font-arabic: 'Amiri', 'Georgia', serif;
   }
 
   .dark {
-    --background: 0 0% 100%;
-    --foreground: 0 0% 0%;
+    --background: 0 0% 0%;
+    --foreground: 0 0% 100%;
   }
 }
 
@@ -58,11 +49,15 @@
 
   html {
     scroll-behavior: smooth;
+    -webkit-overflow-scrolling: touch;
   }
 
   body {
     @apply bg-background text-foreground antialiased;
     font-family: var(--font-body);
+    font-feature-settings: "rlig" 1, "calt" 1;
+    -webkit-font-smoothing: antialiased;
+    -moz-osx-font-smoothing: grayscale;
   }
 }
 
@@ -79,28 +74,24 @@
     font-family: var(--font-body);
   }
 
-  .text-gradient {
-    @apply bg-clip-text text-transparent;
-    background-image: linear-gradient(135deg, hsl(var(--foreground)) 0%, hsl(var(--muted-foreground)) 100%);
+  .font-arabic {
+    font-family: var(--font-arabic);
   }
 
   .section-padding {
-    @apply px-6 py-24 md:px-12 lg:px-24;
+    @apply px-6 py-16 md:py-24;
   }
 
   .hero-text {
-    font-family: var(--font-display);
-    @apply text-6xl sm:text-8xl md:text-9xl lg:text-[12rem] xl:text-[14rem] tracking-tight leading-none uppercase;
+    @apply font-display text-5xl md:text-6xl lg:text-7xl tracking-wider;
   }
 
   .name-text {
-    font-family: var(--font-display);
-    @apply text-5xl sm:text-7xl md:text-8xl lg:text-9xl tracking-tight leading-none uppercase;
+    @apply font-display text-5xl md:text-6xl lg:text-7xl tracking-wide;
   }
 
   .handwriting-text {
-    font-family: var(--font-handwriting);
-    @apply text-2xl sm:text-3xl md:text-4xl;
+    @apply font-handwriting text-xl md:text-2xl lg:text-3xl;
   }
 
   .video-overlay {
@@ -108,29 +99,14 @@
   }
 }
 
+/* Utility animations */
 @layer utilities {
-  .animate-fade-in {
-    animation: fadeIn 1s ease-out forwards;
+  .fade-in {
+    animation: fadeIn 0.6s ease-out forwards;
   }
 
-  .animate-fade-in-up {
-    animation: fadeInUp 1s ease-out forwards;
-  }
-
-  .animate-slide-left {
-    animation: slideLeft 1.2s ease-out forwards;
-  }
-
-  .animate-slide-right {
-    animation: slideRight 1.2s ease-out forwards;
-  }
-
-  .animate-scale-in {
-    animation: scaleIn 0.8s ease-out forwards;
-  }
-
-  .animate-blur-in {
-    animation: blurIn 1s ease-out forwards;
+  .fade-up {
+    animation: fadeUp 0.6s ease-out forwards;
   }
 
   .delay-100 { animation-delay: 100ms; }
@@ -138,23 +114,17 @@
   .delay-300 { animation-delay: 300ms; }
   .delay-400 { animation-delay: 400ms; }
   .delay-500 { animation-delay: 500ms; }
-  .delay-700 { animation-delay: 700ms; }
-  .delay-1000 { animation-delay: 1000ms; }
 }
 
 @keyframes fadeIn {
-  from {
-    opacity: 0;
-  }
-  to {
-    opacity: 1;
-  }
+  from { opacity: 0; }
+  to { opacity: 1; }
 }
 
-@keyframes fadeInUp {
+@keyframes fadeUp {
   from {
     opacity: 0;
-    transform: translateY(40px);
+    transform: translateY(20px);
   }
   to {
     opacity: 1;
@@ -162,53 +132,23 @@
   }
 }
 
-@keyframes slideLeft {
-  from {
-    opacity: 0;
-    transform: translateX(100px);
+/* Floating animation */
+@keyframes float {
+  0%, 100% {
+    transform: translateY(0px);
   }
-  to {
-    opacity: 1;
-    transform: translateX(0);
-  }
-}
-
-@keyframes slideRight {
-  from {
-    opacity: 0;
-    transform: translateX(-100px);
-  }
-  to {
-    opacity: 1;
-    transform: translateX(0);
+  50% {
+    transform: translateY(-10px);
   }
 }
 
-@keyframes scaleIn {
-  from {
-    opacity: 0;
-    transform: scale(0.9);
-  }
-  to {
-    opacity: 1;
-    transform: scale(1);
-  }
-}
-
-@keyframes blurIn {
-  from {
-    opacity: 0;
-    filter: blur(10px);
-  }
-  to {
-    opacity: 1;
-    filter: blur(0);
-  }
+.animate-float {
+  animation: float 4s ease-in-out infinite;
 }
 
 /* Scrollbar styling */
 ::-webkit-scrollbar {
-  width: 8px;
+  width: 4px;
 }
 
 ::-webkit-scrollbar-track {
@@ -216,10 +156,40 @@
 }
 
 ::-webkit-scrollbar-thumb {
-  background: hsl(var(--muted));
-  border-radius: 4px;
+  background: hsl(var(--foreground) / 0.2);
+  border-radius: 2px;
 }
 
 ::-webkit-scrollbar-thumb:hover {
-  background: hsl(var(--muted-foreground));
+  background: hsl(var(--foreground) / 0.4);
+}
+
+/* Mobile optimizations */
+@media (max-width: 640px) {
+  html {
+    font-size: 14px;
+  }
+  
+  .hero-text {
+    @apply text-4xl;
+  }
+  
+  .name-text {
+    @apply text-4xl;
+  }
+}
+
+/* Touch device optimizations */
+@media (hover: none) {
+  * {
+    -webkit-tap-highlight-color: transparent;
+  }
+}
+
+/* Safe area for notched devices */
+@supports (padding: max(0px)) {
+  body {
+    padding-left: max(0px, env(safe-area-inset-left));
+    padding-right: max(0px, env(safe-area-inset-right));
+  }
 }
