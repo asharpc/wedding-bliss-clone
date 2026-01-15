@@ -5,7 +5,8 @@ import { useLocation } from 'react-router-dom';
 import { MapPin, Calendar } from 'lucide-react';
 import { weddingData } from '@/lib/weddingData';
 import CountdownTimer from './CountdownTimer';
-import venueImage from '@/assets/venue-image.jpg';
+import venueImage from '@/assets/venue-image-new.jpg';
+
 
 const DetailsSection = () => {
   const ref = useRef(null);
@@ -42,15 +43,7 @@ const DetailsSection = () => {
   return (
     <section ref={ref} className="bg-background">
       {/* Countdown Section */}
-      <div className="px-6 py-16 md:py-24">
-        <motion.div
-          initial={{ opacity: 0, y: 30 }}
-          animate={isInView ? { opacity: 1, y: 0 } : {}}
-          transition={{ duration: 0.8 }}
-        >
-          <CountdownTimer />
-        </motion.div>
-      </div>
+
 
       {/* Date Display - Modern Style */}
       <motion.div
@@ -79,6 +72,8 @@ const DetailsSection = () => {
           </span>
         </div>
       </motion.div>
+
+
 
       {/* Nikah & Reception Times */}
       <div className="px-6 py-12 md:py-16">
@@ -126,6 +121,16 @@ const DetailsSection = () => {
         </div>
       </div>
 
+      <div className="px-6 py-16 md:py-24">
+        <motion.div
+          initial={{ opacity: 0, y: 30 }}
+          animate={isInView ? { opacity: 1, y: 0 } : {}}
+          transition={{ duration: 0.8 }}
+        >
+          <CountdownTimer />
+        </motion.div>
+      </div>
+
       {/* Location Section with Image */}
       <motion.div
         initial={{ opacity: 0, y: 30 }}
@@ -147,7 +152,7 @@ const DetailsSection = () => {
       >
         <img
           src={venueImage}
-          alt="Rozia International Convention Centre"
+          alt="Rozia International Convention Center"
           className="w-full h-[60vh] md:h-[70vh] object-cover"
         />
       </motion.div>

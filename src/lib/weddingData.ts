@@ -15,18 +15,18 @@ export const weddingData = {
   nikah: {
     date: "2026-02-15",
     time: "11:30 AM",
-    venue: "Rozia International Convention Centre",
+    venue: "Rozia International Convention Center",
     venue_address: "Near Calicut International Airport, Kodangad, Kondotty, Malappuram, Kerala 673638",
     google_maps_link: "https://maps.app.goo.gl/qfZjbhwQeiFRZ4458"
   },
   reception: {
     time: "05:00 PM",
     date: "2026-02-15",
-    venue: "Rozia International Convention Centre",
+    venue: "Rozia International Convention Center",
     venue_address: "Near Calicut International Airport, Kodangad, Kondotty, Malappuram, Kerala 673638",
     google_maps_link: "https://maps.app.goo.gl/qfZjbhwQeiFRZ4458"
   },
-  notes: "Same venue for both Nikah and Reception. Date is February 15, 2026. Venue is a premier convention centre near Calicut Airport in Kondotty area."
+  notes: "Same venue for both Nikah and Reception. Date is February 15, 2026. Venue is a premier convention center near Calicut Airport in Kondotty area."
 };
 
 export const formatDate = (dateString: string): string => {
