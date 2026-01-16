@@ -15,15 +15,6 @@ const FooterSection = () => {
         transition={{ duration: 0.8 }}
         className="max-w-lg mx-auto text-center"
       >
-        <p className="font-handwriting text-lg md:text-xl text-foreground/60 mb-4">
-          You are cordially invited by
-        </p>
-
-        <div className="space-y-3 mb-8">
-          <p className="font-display text-lg md:text-xl text-foreground tracking-wide">
-            {weddingData.bride.father} Family
-          </p>
-        </div>
 
         <div className="w-16 h-px bg-foreground/30 mx-auto mb-8" />
 

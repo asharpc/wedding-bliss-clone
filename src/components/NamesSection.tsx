@@ -68,7 +68,7 @@ const NamesSection = () => {
           transition={{ duration: 0.8, delay: 0.8 }}
           className="mt-14 md:mt-20 font-display text-3xl md:text-4xl lg:text-5xl text-foreground tracking-[0.2em]"
         >
-          ARE GETTING MARRIED
+          ARE GETTING MARRIED ON
         </motion.p>
       </div>
     </section>

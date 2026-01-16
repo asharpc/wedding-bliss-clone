@@ -90,10 +90,10 @@ const DetailsSection = () => {
               <h3 className="font-display text-2xl md:text-3xl text-foreground tracking-wider mb-4">
                 NIKAH
               </h3>
-              <p className="font-body text-base md:text-lg text-foreground/80">
+              <p className="font-body text-xl md:text-lg text-foreground/80">
                 {weekday}
               </p>
-              <p className="font-body text-lg md:text-xl text-foreground">
+              <p className="font-body text-2xl md:text-3xl text-foreground">
                 {weddingData.nikah.time}
               </p>
             </motion.div>
@@ -110,10 +110,10 @@ const DetailsSection = () => {
               <h3 className="font-display text-2xl md:text-3xl text-foreground tracking-wider mb-4">
                 RECEPTION
               </h3>
-              <p className="font-body text-base md:text-lg text-foreground/80">
+              <p className="font-body text-xl md:text-lg text-foreground/80">
                 {weekday}
               </p>
-              <p className="font-body text-lg md:text-xl text-foreground">
+              <p className="font-body text-2xl md:text-3xl text-foreground">
                 {weddingData.reception.time}
               </p>
             </motion.div>
@@ -121,15 +121,7 @@ const DetailsSection = () => {
         </div>
       </div>
 
-      <div className="px-6 py-16 md:py-24">
-        <motion.div
-          initial={{ opacity: 0, y: 30 }}
-          animate={isInView ? { opacity: 1, y: 0 } : {}}
-          transition={{ duration: 0.8 }}
-        >
-          <CountdownTimer />
-        </motion.div>
-      </div>
+
 
       {/* Location Section with Image */}
       <motion.div
@@ -171,20 +163,30 @@ const DetailsSection = () => {
           {weddingData.nikah.venue_address}
         </p>
 
-        <div className="flex flex-col sm:flex-row gap-4 justify-center items-center">
+        <div className="flex flex-col xl:flex-row gap-8 xl:gap-16 justify-center items-center max-w-7xl mx-auto">
           <a
             href={weddingData.nikah.google_maps_link}
             target="_blank"
             rel="noopener noreferrer"
-            className="inline-flex items-center gap-2 px-6 py-3 border border-foreground text-foreground font-body text-sm tracking-wider hover:bg-foreground hover:text-background transition-all duration-300"
+            className="inline-flex items-center gap-2 px-8 py-4 border border-foreground text-foreground font-body text-sm tracking-wider hover:bg-foreground hover:text-background transition-all duration-300 min-w-[200px] justify-center"
           >
             <MapPin className="w-4 h-4" />
             View on Maps
           </a>
 
+          <div className="w-full max-w-3xl">
+            <motion.div
+              initial={{ opacity: 0, scale: 0.95 }}
+              animate={isInView ? { opacity: 1, scale: 1 } : {}}
+              transition={{ duration: 0.8 }}
+            >
+              <CountdownTimer />
+            </motion.div>
+          </div>
+
           <button
             onClick={addToCalendar}
-            className="inline-flex items-center gap-2 px-6 py-3 bg-foreground text-background font-body text-sm tracking-wider hover:bg-foreground/90 transition-all duration-300"
+            className="inline-flex items-center gap-2 px-8 py-4 bg-foreground text-background font-body text-sm tracking-wider hover:bg-foreground/90 transition-all duration-300 min-w-[200px] justify-center"
           >
             <Calendar className="w-4 h-4" />
             Add to Calendar

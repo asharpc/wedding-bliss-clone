@@ -1,6 +1,7 @@
 import { useEffect, useState } from 'react';
 import { motion } from 'framer-motion';
 import posterImage from '../assets/poster.jpg';
+import { weddingData } from '@/lib/weddingData';
 
 const HeroSection = () => {
   const [scrollY, setScrollY] = useState(0);
@@ -39,7 +40,16 @@ const HeroSection = () => {
           transition={{ duration: 0.8, delay: 0.2 }}
           className="font-handwriting text-xl md:text-2xl text-foreground/80 mb-6"
         >
-          You are cordially invited to
+          You are cordially invited by
+        </motion.p>
+
+        <motion.p
+          initial={{ opacity: 0, y: 20 }}
+          animate={{ opacity: 1, y: 0 }}
+          transition={{ duration: 0.8, delay: 0.2 }}
+          className="font-handwriting text-xl md:text-2xl text-foreground/80 mb-6"
+        >
+          {weddingData.bride.father} Family
         </motion.p>
 
         <motion.h1
