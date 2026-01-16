@@ -6,6 +6,7 @@ import { BrowserRouter, Routes, Route } from "react-router-dom";
 import Index from "./pages/Index";
 import NotFound from "./pages/NotFound";
 import WishesJson from "./pages/WishesJson";
+import AllWishes from "./pages/AllWishes";
 
 const queryClient = new QueryClient();
 
@@ -19,6 +20,7 @@ const App = () => (
           <Route path="/" element={<Index />} />
           <Route path="/nikah" element={<Index />} />
           <Route path="/reception" element={<Index />} />
+          <Route path="/wishes" element={<AllWishes />} />
           <Route path="/wishes.json" element={<WishesJson />} />
           {/* ADD ALL CUSTOM ROUTES ABOVE THE CATCH-ALL "*" ROUTE */}
           <Route path="*" element={<NotFound />} />
