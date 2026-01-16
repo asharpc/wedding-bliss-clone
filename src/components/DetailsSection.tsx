@@ -162,8 +162,16 @@ const DetailsSection = () => {
         <p className="font-body text-sm md:text-base text-foreground/70 max-w-md mx-auto mb-8 leading-relaxed">
           {weddingData.nikah.venue_address}
         </p>
+      </motion.div>
 
-        <div className="flex flex-col xl:flex-row gap-8 xl:gap-16 justify-center items-center max-w-7xl mx-auto">
+      {/* Action Row - Maps, Countdown, Calendar */}
+      <motion.div
+        initial={{ opacity: 0, y: 30 }}
+        animate={isInView ? { opacity: 1, y: 0 } : {}}
+        transition={{ duration: 0.8, delay: 0.8 }}
+        className="px-6 pb-20 md:pb-24"
+      >
+        <div className="flex flex-col gap-12 justify-center items-center max-w-7xl mx-auto">
           <a
             href={weddingData.nikah.google_maps_link}
             target="_blank"
@@ -174,7 +182,7 @@ const DetailsSection = () => {
             View on Maps
           </a>
 
-          <div className="w-full max-w-3xl">
+          <div className="w-full max-w-3xl py-8 md:py-12">
             <motion.div
               initial={{ opacity: 0, scale: 0.95 }}
               animate={isInView ? { opacity: 1, scale: 1 } : {}}

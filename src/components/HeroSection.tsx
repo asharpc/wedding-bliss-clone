@@ -34,14 +34,14 @@ const HeroSection = () => {
 
       {/* Content - Mobile First */}
       <div className="relative z-10 text-center px-6 w-full max-w-lg mx-auto">
-        <motion.p
+        {/* <motion.p
           initial={{ opacity: 0, y: 20 }}
           animate={{ opacity: 1, y: 0 }}
           transition={{ duration: 0.8, delay: 0.2 }}
           className="font-handwriting text-xl md:text-2xl text-foreground/80 mb-6"
         >
           You are cordially invited by
-        </motion.p>
+        </motion.p> */}
 
         <motion.p
           initial={{ opacity: 0, y: 20 }}
