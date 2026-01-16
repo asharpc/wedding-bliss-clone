@@ -1,0 +1,7 @@
+name = "wedding-bliss-clone"
+compatibility_date = "2024-01-01"
+
+[[kv_namespaces]]
+binding = "WEDDING_WISHES_KV"
+id = "cac1a5e211c6415e823160754292cf35"
+preview_id = "cac1a5e211c6415e823160754292cf35"

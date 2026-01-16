@@ -4,24 +4,21 @@ const WishesJson = () => {
     const [data, setData] = useState<any>(null);
 
     useEffect(() => {
-        const STORAGE_KEYS = {
-            LIKES: 'wedding_bliss_likes',
-            HAS_LIKED: 'wedding_bliss_user_has_liked',
-            WISHES: 'wedding_bliss_wishes'
-        };
-
-        const likes = localStorage.getItem(STORAGE_KEYS.LIKES);
-        const wishes = JSON.parse(localStorage.getItem(STORAGE_KEYS.WISHES) || '[]');
-
-        // Construct the data object
-        const jsonData = {
-            likes: likes ? parseInt(likes, 10) : 0,
-            count: wishes.length,
-            wishes: wishes,
-            generatedAt: new Date().toISOString()
-        };
-
-        setData(jsonData);
+        fetch('/api/wishes')
+            .then(res => res.json())
+            .then(apiData => {
+                const jsonData = {
+                    likes: apiData.likes || 0,
+                    count: apiData.wishes ? apiData.wishes.length : 0,
+                    wishes: apiData.wishes || [],
+                    generatedAt: new Date().toISOString()
+                };
+                setData(jsonData);
+            })
+            .catch(err => {
+                console.error('Error fetching wishes:', err);
+                setData({ error: 'Failed to fetch data' });
+            });
     }, []);
 
     if (!data) return null;

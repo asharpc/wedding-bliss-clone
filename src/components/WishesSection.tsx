@@ -24,92 +24,92 @@ const WishesSection = () => {
     WISHES: 'wedding_bliss_wishes'
   };
 
-  // Initialize from local storage or fetch default
+  // Initialize from API
   useEffect(() => {
-    const storedLikes = localStorage.getItem(STORAGE_KEYS.LIKES);
     const storedHasLiked = localStorage.getItem(STORAGE_KEYS.HAS_LIKED);
-
-    if (storedLikes) {
-      setLikes(parseInt(storedLikes, 10));
-    } else {
-      // Try to fetch from default JSON
-      fetch('/initial-wishes.json')
-        .then(res => res.json())
-        .then(data => {
-          if (data && typeof data.likes === 'number') {
-            setLikes(data.likes);
-            // Optional: Save this default to local storage so subsequent loads are faster/consistent
-            localStorage.setItem(STORAGE_KEYS.LIKES, data.likes.toString());
-          }
-        })
-        .catch(err => console.log('No default initial-wishes.json found or fetch failed', err));
-    }
-
     if (storedHasLiked === 'true') {
       setLiked(true);
     }
+
+    // Fetch initial data from API
+    fetch('/api/wishes')
+      .then(res => res.json())
+      .then((data: any) => {
+        if (data && typeof data.likes === 'number') {
+          setLikes(data.likes);
+        }
+      })
+      .catch(err => console.log('Failed to fetch wishes from API', err));
   }, []);
 
   const removeHeart = (id: number) => {
     setFloatingHearts(prev => prev.filter(heart => heart.id !== id));
   };
 
-  const handleLike = (e: React.MouseEvent) => {
+  const handleLike = async (e: React.MouseEvent) => {
     let newLikes = likes;
     let newLiked = !liked;
+    const type = !liked ? 'increment' : 'decrement';
 
     if (!liked) {
       newLikes = likes + 1;
       newLiked = true;
 
       // Trigger floating heart animation (Instagram style)
-      // Add a new heart to the list
       const newHeart = {
         id: Date.now(),
-        x: Math.random() * 40 - 20, // Random x deviation
+        x: Math.random() * 40 - 20,
         y: 0
       };
       setFloatingHearts(prev => [...prev, newHeart]);
-
     } else {
       newLikes = likes - 1;
       newLiked = false;
     }
 
+    // Optimistic UI update
     setLikes(newLikes);
     setLiked(newLiked);
-
-    // Save to local storage
-    localStorage.setItem(STORAGE_KEYS.LIKES, newLikes.toString());
     localStorage.setItem(STORAGE_KEYS.HAS_LIKED, newLiked.toString());
+
+    // Call API
+    try {
+      await fetch('/api/likes', {
+        method: 'POST',
+        headers: { 'Content-Type': 'application/json' },
+        body: JSON.stringify({ type })
+      });
+    } catch (error) {
+      console.error('Error updating likes:', error);
+      // Revert on error if needed, but for now just logging
+    }
   };
 
-  const handleSubmit = (e: React.FormEvent) => {
+  const handleSubmit = async (e: React.FormEvent) => {
     e.preventDefault();
 
-    // Create new wish object
     const newWish = {
-      id: Date.now().toString(),
       name: formData.name,
       message: formData.message,
-      date: new Date().toISOString()
     };
 
-    // Save to local storage
     try {
-      const existingWishes = JSON.parse(localStorage.getItem(STORAGE_KEYS.WISHES) || '[]');
-      const updatedWishes = [...existingWishes, newWish];
-      localStorage.setItem(STORAGE_KEYS.WISHES, JSON.stringify(updatedWishes));
+      const res = await fetch('/api/wishes', {
+        method: 'POST',
+        headers: { 'Content-Type': 'application/json' },
+        body: JSON.stringify(newWish)
+      });
 
-      // Also log to console for development verification
-      console.log('Wish saved locally:', newWish);
-      console.log('All local wishes:', updatedWishes);
+      if (res.ok) {
+        toast.success('Thank you for your wishes! 💕');
+        setFormData({ name: '', message: '' });
+      } else {
+        throw new Error('Failed to save wish');
+      }
     } catch (error) {
       console.error('Error saving wish:', error);
+      toast.error('Something went wrong. Please try again.');
     }
-
-    toast.success('Thank you for your wishes! 💕');
-    setFormData({ name: '', message: '' });
   };
 
 
