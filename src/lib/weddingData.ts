@@ -13,7 +13,7 @@ export const weddingData = {
     location: "Noorengal, Melmuri, Malappuram"
   },
   nikah: {
-    date: "2026-02-15",
+    date: "2026-02-20",
     time: "11:30 AM",
     venue: "Rozia International Convention Center",
     venue_address: "Near Calicut International Airport, Kodangad, Kondotty, Malappuram, Kerala 673638",
@@ -21,7 +21,7 @@ export const weddingData = {
   },
   reception: {
     time: "05:00 PM",
-    date: "2026-02-15",
+    date: "2026-02-20",
     venue: "Rozia International Convention Center",
     venue_address: "Near Calicut International Airport, Kodangad, Kondotty, Malappuram, Kerala 673638",
     google_maps_link: "https://maps.app.goo.gl/qfZjbhwQeiFRZ4458"
