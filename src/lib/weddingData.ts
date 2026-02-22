@@ -40,5 +40,5 @@ export const formatDate = (dateString: string): string => {
 };
 
 export const getEventDate = (): Date => {
-  return new Date('2026-02-15T11:30:00');
+  return new Date('2026-02-20T11:30:00');
 };
