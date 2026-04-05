@@ -16,20 +16,20 @@ const NamesSection = () => {
           animate={isInView ? { opacity: 1, y: 0 } : {}}
           transition={{ duration: 0.8, ease: "easeOut" }}
         >
-          {/* Bride Name - Large Display */}
+
           <h2 className="font-display text-5xl md:text-6xl lg:text-7xl text-foreground tracking-wide mb-4">
-            {weddingData.bride.name.toUpperCase()}
+            {weddingData.groom.name.toUpperCase()}
           </h2>
           <p className="font-body text-xs md:text-sm text-foreground/60 tracking-[0.2em] uppercase mb-2">
-            Daughter of {weddingData.bride.father}
+            Son of {weddingData.groom.father}
           </p>
           <p className="font-body text-xs text-foreground/50 mb-1">
-            Granddaughter of {weddingData.bride.grandfather}
+            Grandson of {weddingData.groom.grandfather}
           </p>
           <p className="font-handwriting text-lg md:text-xl text-foreground/50">
-            {weddingData.bride.location}
+            {weddingData.groom.location}
           </p>
-        </motion.div>
+      
 
         {/* Ampersand */}
         <motion.div
@@ -47,18 +47,21 @@ const NamesSection = () => {
           animate={isInView ? { opacity: 1, y: 0 } : {}}
           transition={{ duration: 0.8, delay: 0.5, ease: "easeOut" }}
         >
+              {/* Bride Name - Large Display */}
           <h2 className="font-display text-5xl md:text-6xl lg:text-7xl text-foreground tracking-wide mb-4">
-            {weddingData.groom.name.toUpperCase()}
+            {weddingData.bride.name.toUpperCase()}
           </h2>
           <p className="font-body text-xs md:text-sm text-foreground/60 tracking-[0.2em] uppercase mb-2">
-            Son of {weddingData.groom.father}
+            Daughter of {weddingData.bride.father}
           </p>
           <p className="font-body text-xs text-foreground/50 mb-1">
-            Grandson of {weddingData.groom.grandfather}
+            Granddaughter of {weddingData.bride.grandfather}
           </p>
           <p className="font-handwriting text-lg md:text-xl text-foreground/50">
-            {weddingData.groom.location}
+            {weddingData.bride.location}
           </p>
+        </motion.div>
+          
         </motion.div>
 
         {/* Getting Married */}
