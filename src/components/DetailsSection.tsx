@@ -21,8 +21,8 @@ const DetailsSection = () => {
   const showReception = isReceptionPage || (!isNikahPage && !isReceptionPage);
 
   const addToCalendar = () => {
-    const startDate = new Date('2026-02-15T11:30:00');
-    const endDate = new Date('2026-02-15T21:00:00');
+    const startDate = new Date('2026-04-23T11:30:00');
+    const endDate = new Date('2026-04-25T21:00:00');
 
     const formatDateForCalendar = (date: Date) => {
       return date.toISOString().replace(/-|:|\.\d+/g, '');
