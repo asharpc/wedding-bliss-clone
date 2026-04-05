@@ -49,7 +49,7 @@ const HeroSection = () => {
           transition={{ duration: 0.8, delay: 0.2 }}
           className="font-handwriting text-xl md:text-2xl text-foreground/80 mb-6"
         >
-          {weddingData.bride.father} Family
+          {weddingData.groom.father} Family
         </motion.p>
 
         <motion.h1
