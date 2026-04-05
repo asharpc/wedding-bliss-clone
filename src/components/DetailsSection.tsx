@@ -5,7 +5,7 @@ import { useLocation } from 'react-router-dom';
 import { MapPin, Calendar } from 'lucide-react';
 import { weddingData } from '@/lib/weddingData';
 import CountdownTimer from './CountdownTimer';
-import venueImage from '@/assets/venue-image-new.jpg';
+import venueImage from '@/assets/unnamed.jpg';
 
 
 const DetailsSection = () => {
