@@ -3,8 +3,8 @@ import { weddingData } from '@/lib/weddingData';
 
 const StickyHeader = () => {
     // Extract first names
-    const brideFirstName = weddingData.bride.name.split(' ')[0].toUpperCase();
-    const groomFirstName = weddingData.groom.name.split(' ')[1].toUpperCase();
+    const brideFirstName = weddingData.bride.name.split(' ')[1].toUpperCase();
+    const groomFirstName = weddingData.groom.name.split(' ')[0].toUpperCase();
 
     return (
         <div className="fixed top-6 left-6 z-50 pointer-events-none mix-blend-difference">
