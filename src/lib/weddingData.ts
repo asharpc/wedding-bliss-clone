@@ -1,32 +1,32 @@
 export const weddingData = {
   event_type: "Nikah (Marriage) and Reception",
   groom: {
-    name: "Abdul Lihan",
-    father: "Abdul Nazeer & Vinitha Nazeer",
-    grandfather: "Late AdakaParambil Abdul Kader Haji & Late Valiyara Aboobacker Haji",
-    location: "East Fort, Thrissur"
+    name: "Jouhar Pc",
+    father: "Moideen kutty & Ummu kulsu",
+    grandfather: "Late PC Haji & Late Umoomma",
+    location: "Valiyapeedika, Kunnunmpuram"
   },
   bride: {
-    name: "Rifha Fathima",
-    father: "Abdul Rafeeque & Semi Saleena",
-    grandfather: "N Abdu Rahiman Haji & Late Chakkarathodi Cheku",
-    location: "Noorengal, Melmuri, Malappuram"
+    name: "Fathima Minha PP",
+    father: "Muhammed rafeeq & Asmabi",
+    grandfather: "Pariparamban Haji & Late Pariparamban Ummooma",
+    location: "Vk padi, Tirurangadi, Malappuram"
   },
   nikah: {
-    date: "2026-02-25",
+    date: "2026-04-23",
     time: "11:30 AM",
-    venue: "Rozia International Convention Center",
-    venue_address: "Near Calicut International Airport, Kodangad, Kondotty, Malappuram, Kerala 673638",
+    venue: "Pullat Convention Center",
+    venue_address: "Pullat Convention Centre, Malappuram, Kerala 676306",
     google_maps_link: "https://maps.app.goo.gl/qfZjbhwQeiFRZ4458"
   },
   reception: {
     time: "05:00 PM",
-    date: "2026-02-25",
-    venue: "Rozia International Convention Center",
-    venue_address: "Near Calicut International Airport, Kodangad, Kondotty, Malappuram, Kerala 673638",
+    date: "2026-04-25",
+    venue: "Pullat Convention Center",
+    venue_address: "Pullat Convention Centre, Malappuram, Kerala 676306",
     google_maps_link: "https://maps.app.goo.gl/qfZjbhwQeiFRZ4458"
   },
-  notes: "Same venue for both Nikah and Reception. Date is February 15, 2026. Venue is a premier convention center near Calicut Airport in Kondotty area."
+  notes: "Same venue for both Nikah and Reception."
 };
 
 export const formatDate = (dateString: string): string => {
@@ -40,5 +40,5 @@ export const formatDate = (dateString: string): string => {
 };
 
 export const getEventDate = (): Date => {
-  return new Date('2026-02-25T11:30:00');
+  return new Date('2026-04-25T11:30:00');
 };
