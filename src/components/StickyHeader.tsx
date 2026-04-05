@@ -21,7 +21,7 @@ const StickyHeader = () => {
                     }}
                     className="font-display text-xl md:text-2xl text-white font-bold tracking-widest"
                 >
-                    {brideFirstName} &
+                    {groomFirstName} &
                 </motion.div>
                 <motion.div
                     animate={{
@@ -36,7 +36,7 @@ const StickyHeader = () => {
                     }}
                     className="font-display text-xl md:text-2xl text-white font-bold tracking-widest pl-4"
                 >
-                    {groomFirstName}
+                    {brideFirstName}
                 </motion.div>
             </div>
         </div>
