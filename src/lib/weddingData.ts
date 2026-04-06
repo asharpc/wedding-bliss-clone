@@ -2,7 +2,7 @@ export const weddingData = {
   event_type: "Nikah (Marriage) and Reception",
   groom: {
     name: "Jouhar Pc",
-    father: "Moideen kutty Pc & Ummu kulsu",
+    father: "Moideen kutty Pc & Late Ummu kulsu",
     grandfather: "Late Pc Yousuf Haji & Late Kunji Pathumma",
     location: "Valiyapeedika, Kunnunmpuram, ArNagar, Malappuram"
   },
