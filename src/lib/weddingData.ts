@@ -2,29 +2,29 @@ export const weddingData = {
   event_type: "Nikah (Marriage) and Reception",
   groom: {
     name: "Jouhar Pc",
-    father: "Moideen kutty & Ummu kulsu",
-    grandfather: "Late PC Haji & Late Umoomma",
-    location: "Valiyapeedika, Kunnunmpuram"
+    father: "Moideen kutty Pc & Ummu kulsu",
+    grandfather: "Late Pc Yousuf Haji & Late Kunji Pathumma",
+    location: "Valiyapeedika, Kunnunmpuram, ArNagar, Malappuram"
   },
   bride: {
     name: "Fathima Minha PP",
     father: "Muhammed rafeeq & Asmabi",
-    grandfather: "Pariparamban Haji & Late Pariparamban Ummooma",
+    grandfather: "Pariparamban Kunji Muhammed & Late Thacholi Pathumma",
     location: "Vk padi, Tirurangadi, Malappuram"
   },
   nikah: {
     date: "2026-04-23",
-    time: "11:30 AM",
+    time: "10:00 AM",
     venue: "Pullat Convention Center",
     venue_address: "Pullat Convention Centre, Malappuram, Kerala 676306",
-    google_maps_link: "https://maps.app.goo.gl/qfZjbhwQeiFRZ4458"
+    google_maps_link: "https://maps.app.goo.gl/ZwuoZ93wJxYJpM8X8"
   },
   reception: {
-    time: "05:00 PM",
+    time: "11:30 AM",
     date: "2026-04-25",
     venue: "Pullat Convention Center",
     venue_address: "Pullat Convention Centre, Malappuram, Kerala 676306",
-    google_maps_link: "https://maps.app.goo.gl/qfZjbhwQeiFRZ4458"
+    google_maps_link: "https://maps.app.goo.gl/ZwuoZ93wJxYJpM8X8"
   },
   notes: "Same venue for both Nikah and Reception."
 };
