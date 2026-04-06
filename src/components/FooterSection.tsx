@@ -22,9 +22,6 @@ const FooterSection = () => {
           {weddingData.groom.name} & {weddingData.bride.name}
         </h3>
 
-        <p className="font-body text-xs text-foreground/50 tracking-widest uppercase">
-          April 25, 2026
-        </p>
       </motion.div>
     </footer>
   );
