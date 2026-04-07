@@ -221,7 +221,7 @@ const DetailsSection = () => {
             >
               <CountdownTimer 
                 targetDate={new Date('2026-04-23T10:00:00')} 
-                title="Reception Countdown"
+                title="Nikah Countdown"
               />
             </motion.div>
           </div> )}
