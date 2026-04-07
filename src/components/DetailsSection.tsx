@@ -219,7 +219,10 @@ const DetailsSection = () => {
               animate={isInView ? { opacity: 1, scale: 1 } : {}}
               transition={{ duration: 0.8 }}
             >
-              <CountdownTimer />
+              <CountdownTimer 
+                targetDate={new Date('2026-04-23T10:00:00')} 
+                title="Reception Countdown"
+              />
             </motion.div>
           </div> )}
 
@@ -231,7 +234,10 @@ const DetailsSection = () => {
               animate={isInView ? { opacity: 1, scale: 1 } : {}}
               transition={{ duration: 0.8 }}
             >
-              <CountdownTimer />
+              <CountdownTimer 
+                targetDate={new Date('2026-04-25T11:30:00')} 
+                title="Reception Countdown"
+              />
             </motion.div>
           </div> )}
 
