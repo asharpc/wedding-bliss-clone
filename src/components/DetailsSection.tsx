@@ -46,7 +46,7 @@ const DetailsSection = () => {
 
 
       {/* Date Display - Modern Style */}
-      <motion.div
+      {showNikah && ( <motion.div
         initial={{ opacity: 0, y: 30 }}
         animate={isInView ? { opacity: 1, y: 0 } : {}}
         transition={{ duration: 0.8, delay: 0.2 }}
@@ -55,7 +55,7 @@ const DetailsSection = () => {
         <div className="flex flex-col items-center">
           {/* Month */}
           <span className="font-display text-lg md:text-xl lg:text-2xl text-foreground tracking-[0.3em] mb-2">
-            {month}
+             APRIL
           </span>
           {/* Day - Big and Bold */}
           <div className="flex items-center gap-4">
@@ -71,7 +71,36 @@ const DetailsSection = () => {
             {year}
           </span>
         </div>
-      </motion.div>
+      </motion.div>  
+      )}
+
+      {showReception && ( <motion.div
+        initial={{ opacity: 0, y: 30 }}
+        animate={isInView ? { opacity: 1, y: 0 } : {}}
+        transition={{ duration: 0.8, delay: 0.2 }}
+        className="text-center px-6 py-12 md:py-16"
+      >
+        <div className="flex flex-col items-center">
+          {/* Month */}
+          <span className="font-display text-lg md:text-xl lg:text-2xl text-foreground tracking-[0.3em] mb-2">
+            APRIL
+          </span>
+          {/* Day - Big and Bold */}
+          <div className="flex items-center gap-4">
+            <span className="font-display text-8xl md:text-9xl lg:text-[12rem] text-foreground font-bold leading-none">
+              25 
+            </span>
+            <span className="font-display text-2xl md:text-3xl lg:text-4xl text-foreground/80 tracking-widest uppercase">
+              Saturday
+            </span>
+          </div>
+          {/* Year */}
+          <span className="font-display text-xl md:text-2xl lg:text-3xl text-foreground tracking-[0.3em] mt-2">
+            {year}
+          </span>
+        </div>
+      </motion.div>  
+      )}
 
 
 
