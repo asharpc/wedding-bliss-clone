@@ -211,6 +211,8 @@ const DetailsSection = () => {
             View on Maps
           </a>
 
+          {showNikah && (
+
           <div className="w-full max-w-3xl py-8 md:py-12">
             <motion.div
               initial={{ opacity: 0, scale: 0.95 }}
@@ -219,7 +221,19 @@ const DetailsSection = () => {
             >
               <CountdownTimer />
             </motion.div>
-          </div>
+          </div> )}
+
+          {showReception && (
+
+          <div className="w-full max-w-3xl py-8 md:py-12">
+            <motion.div
+              initial={{ opacity: 0, scale: 0.95 }}
+              animate={isInView ? { opacity: 1, scale: 1 } : {}}
+              transition={{ duration: 0.8 }}
+            >
+              <CountdownTimer />
+            </motion.div>
+          </div> )}
 
           <button
             onClick={addToCalendar}
