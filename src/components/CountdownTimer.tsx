@@ -1,6 +1,5 @@
 import { useState, useEffect } from 'react';
 import { motion } from 'framer-motion';
-import { getEventDate } from '@/lib/weddingData';
 
 interface TimeLeft {
   days: number;
@@ -9,7 +8,12 @@ interface TimeLeft {
   seconds: number;
 }
 
-const CountdownTimer = () => {
+interface CountdownTimerProps {
+  targetDate: Date;           // ← Now accepting target date as prop
+  title?: string;             // Optional: customize the title
+}
+
+const CountdownTimer = ({ targetDate, title = "Counting the moments" }: CountdownTimerProps) => {
   const [timeLeft, setTimeLeft] = useState<TimeLeft>({
     days: 0,
     hours: 0,
@@ -18,8 +22,6 @@ const CountdownTimer = () => {
   });
 
   useEffect(() => {
-    const targetDate = getEventDate();
-
     const calculateTimeLeft = () => {
       const now = new Date().getTime();
       const difference = targetDate.getTime() - now;
@@ -31,6 +33,9 @@ const CountdownTimer = () => {
           minutes: Math.floor((difference % (1000 * 60 * 60)) / (1000 * 60)),
           seconds: Math.floor((difference % (1000 * 60)) / 1000)
         });
+      } else {
+        // Optional: handle when countdown reaches zero
+        setTimeLeft({ days: 0, hours: 0, minutes: 0, seconds: 0 });
       }
     };
 
@@ -38,7 +43,7 @@ const CountdownTimer = () => {
     const timer = setInterval(calculateTimeLeft, 1000);
 
     return () => clearInterval(timer);
-  }, []);
+  }, [targetDate]); // ← Important: re-run if targetDate changes
 
   const timeUnits = [
     { label: 'Days', value: timeLeft.days },
@@ -56,10 +61,10 @@ const CountdownTimer = () => {
         transition={{ duration: 0.6 }}
         className="font-handwriting text-xl md:text-2xl lg:text-3xl text-foreground/80 mb-8 md:mb-12"
       >
-        Counting the moments
+        {title}
       </motion.p>
 
-      {/* Timer Grid - Mobile First */}
+      {/* Timer Grid */}
       <div className="grid grid-cols-4 gap-2 md:gap-6 lg:gap-8 max-w-sm md:max-w-lg mx-auto">
         {timeUnits.map((unit, index) => (
           <motion.div
@@ -69,11 +74,9 @@ const CountdownTimer = () => {
             transition={{ duration: 0.5, delay: index * 0.1 }}
             className="text-center"
           >
-            {/* Number */}
             <div className="font-display text-4xl md:text-6xl lg:text-7xl text-foreground font-bold leading-none">
               {String(unit.value).padStart(2, '0')}
             </div>
-            {/* Label */}
             <div className="font-body text-xs md:text-sm text-foreground/70 uppercase tracking-widest mt-2">
               {unit.label}
             </div>
